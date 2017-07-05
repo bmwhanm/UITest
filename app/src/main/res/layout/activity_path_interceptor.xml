@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_path_interceptor"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hq.uitest.animator.PathInterceptorActivity">
+
+
+    <ImageView
+        android:id="@+id/iv_pathinterceptor"
+        android:layout_width="60dp"
+        android:layout_height="80dp"
+        android:src="@drawable/girl"
+        />
+</LinearLayout>

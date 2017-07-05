@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_transition_first"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hq.uitest.animator.TransitionFirstActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_transition_first"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:title="transition"
+        android:subtitle="subTitle"
+        android:background="@color/colorPrimary"/>
+
+    <Button
+        android:id="@+id/btn_transition_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:transitionName="btn"
+        android:text="transition"/>
+    <ImageView
+        android:id="@+id/iv_transition_meinv"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:transitionName="meinv"
+        android:src="@drawable/girl"/>
+
+</LinearLayout>

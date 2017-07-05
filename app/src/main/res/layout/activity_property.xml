@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_property"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hq.uitest.animator.PropertyActivity">
+
+    <Button
+        android:id="@+id/btn_property_basic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="objectanimator transition alpha"/>
+    <Button
+        android:id="@+id/btn_property_basic_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="valueanmator transition alpha"/>
+
+
+    <Button
+        android:id="@+id/btn_property_holder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="基础的PropertyValuesHolder的用法"/>
+
+
+
+    <Button
+        android:id="@+id/btn_property_evaluator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="基础的Evaluator的用法"/>
+
+    <TextView
+        android:id="@+id/tv_property_circle"
+        android:layout_width="4dp"
+        android:layout_height="4dp"
+        android:background="@drawable/circlr_bg"/>
+
+</LinearLayout>

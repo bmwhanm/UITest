@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hq.uitest">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".themeandstyle.ThemeAndStyleActivity" />
+        <activity android:name=".aigeselfview.FirstActivity" />
+        <activity android:name=".aigeselfview.PaintAndTextActivity" />
+        <activity android:name=".recyclerviewt.RecyclerViewStaggerActivity" />
+        <activity android:name=".recyclerviewt.headandfootrv.HeaderRvActivity" />
+        <activity android:name=".recyclerviewt.itemtouch.ItemTouchRvActivity" />
+        <activity android:name=".animator.TransitionFirstActivity" />
+        <activity android:name=".animator.TransitionSecondActivity" />
+        <activity android:name=".animator.PathInterceptorActivity" />
+        <activity android:name=".animator.PropertyActivity" />
+        <activity android:name=".paint.PaintActivity" />
+        <activity android:name=".canvas.CanvasActivity" />
+        <activity android:name=".paint.PaintMatrixActivity" />
+        <activity android:name=".paint.PaintShaderActivity" />
+        <activity android:name=".paint.PaintShaderPracticeActivity" />
+        <activity android:name=".drawable.DrawableBaseActivity" />
+        <activity android:name=".path.PathBaseActivity" />
+        <activity android:name=".path.SearchAnimatorActivity"></activity>
+    </application>
+
+</manifest>
