@@ -9,12 +9,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.hq.uitest.R;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class DrawableBaseActivity extends AppCompatActivity {
 
@@ -87,11 +94,45 @@ public class DrawableBaseActivity extends AppCompatActivity {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                Log.e("TAG","onScrolled   dx:"+dx+"  ,dy:"+dy);
-                Log.e("TAG","onScrolled   getScrollX():"+recyclerView.getScrollX());
+//                Log.e("TAG","onScrolled   dx:"+dx+"  ,dy:"+dy);
+//                Log.e("TAG","onScrolled   getScrollX():"+recyclerView.getScrollX());
+//                mManager.findFirstVisibleItemPosition();
+//                mManager.findFirstCompletelyVisibleItemPosition();
+
+                Log.e("TAG","position:"+mManager.findFirstVisibleItemPosition()+"     completePosition:"+mManager.findFirstCompletelyVisibleItemPosition());
+
+                View firstView = mManager.findViewByPosition(mManager.findFirstVisibleItemPosition());
+                View lastView = mManager.findViewByPosition(mManager.findLastVisibleItemPosition());
+
+
+                Log.e("TAG","firstView ScrollX :" +firstView.getLeft());
+                Log.e("TAG","lastView ScrollX : "+ lastView.getRight());
+
+
+                Log.e("TAG","width :" + firstView.getWidth());
+                WindowManager wm = DrawableBaseActivity.this.getWindowManager();
+
+                DisplayMetrics metrics = new DisplayMetrics();
+                 wm.getDefaultDisplay().getMetrics(metrics);
+                int width = metrics.widthPixels;
+                int letWidth = width/2 - firstView.getWidth() /2;
+//                int height = wm.getDefaultDisplay().getHeight();
+//                Log.e("TAG","leaveWidth:"+letWidth);
+
+
+
+//                int num = letWidth / firstView.getWidth();
+//                Log.e("TAG","firstView RIGHT:"+firstView.getRight());
+
+
+
+                int key  = letWidth - firstView.getWidth() - firstView.getRight();
+
+                Log.e("TAG","key:"+mManager.findFirstVisibleItemPosition() + 1);
 
             }
         });
+
 
     }
 

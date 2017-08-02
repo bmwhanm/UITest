@@ -32,7 +32,14 @@
         <activity android:name=".paint.PaintShaderPracticeActivity" />
         <activity android:name=".drawable.DrawableBaseActivity" />
         <activity android:name=".path.PathBaseActivity" />
-        <activity android:name=".path.SearchAnimatorActivity"></activity>
+        <activity android:name=".path.SearchAnimatorActivity" />
+        <activity android:name=".event.LeftDeleteActivity" />
+        <activity android:name=".event.ScrollActivity" />
+        <activity
+            android:name=".materialdesign.AppBarCoordinatorActivity"
+            android:theme="@style/AppTheme.DIYToolbar" />
+        <activity android:name=".path.BeisaierPathActivity" />
+        <activity android:name=".refreshcontrol.RefreshControlSelfActivity"></activity>
     </application>
 
 </manifest>

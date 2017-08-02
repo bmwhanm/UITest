@@ -13,15 +13,20 @@ import com.hq.uitest.animator.PropertyActivity;
 import com.hq.uitest.animator.TransitionFirstActivity;
 import com.hq.uitest.canvas.CanvasActivity;
 import com.hq.uitest.drawable.DrawableBaseActivity;
+import com.hq.uitest.event.LeftDeleteActivity;
+import com.hq.uitest.event.ScrollActivity;
+import com.hq.uitest.materialdesign.AppBarCoordinatorActivity;
 import com.hq.uitest.paint.PaintActivity;
 import com.hq.uitest.paint.PaintMatrixActivity;
 import com.hq.uitest.paint.PaintShaderActivity;
 import com.hq.uitest.paint.PaintShaderPracticeActivity;
+import com.hq.uitest.path.BeisaierPathActivity;
 import com.hq.uitest.path.PathBaseActivity;
 import com.hq.uitest.path.SearchAnimatorActivity;
 import com.hq.uitest.recyclerviewt.RecyclerViewStaggerActivity;
 import com.hq.uitest.recyclerviewt.headandfootrv.HeaderRvActivity;
 import com.hq.uitest.recyclerviewt.itemtouch.ItemTouchRvActivity;
+import com.hq.uitest.refreshcontrol.RefreshControlSelfActivity;
 import com.hq.uitest.themeandstyle.ThemeAndStyleActivity;
 
 import java.util.ArrayList;
@@ -58,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
         mData.add("Drawable的基础用法");
         mData.add("Path的基础用法");
         mData.add("Path绘制的带有动画效果的SearchView");
+        mData.add("基于LinearLayout的侧滑删除");
+        mData.add("View调用scrollTo 和scrollBy后view的坐标关系");
+        mData.add("AppBarLayout加CoordinatorLayout加CollapsingToolbarLayout");
+        mData.add("根据贝塞尔曲线画出一个圆形的滑动图标");
+        mData.add("下拉刷新上拉加载更多");
 
 
         rv_main = (RecyclerView) findViewById(R.id.rv_main);
@@ -136,6 +146,27 @@ public class MainActivity extends AppCompatActivity {
                         mIntent = new Intent(MainActivity.this, SearchAnimatorActivity.class);
                         startActivity(mIntent);
                         break;
+                    case "基于LinearLayout的侧滑删除":
+                        mIntent = new Intent(MainActivity.this, LeftDeleteActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "View调用scrollTo 和scrollBy后view的坐标关系":
+                        mIntent = new Intent(MainActivity.this, ScrollActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "AppBarLayout加CoordinatorLayout加CollapsingToolbarLayout":
+                        mIntent = new Intent(MainActivity.this, AppBarCoordinatorActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "根据贝塞尔曲线画出一个圆形的滑动图标":
+                        mIntent = new Intent(MainActivity.this, BeisaierPathActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "下拉刷新上拉加载更多":
+                        mIntent = new Intent(MainActivity.this, RefreshControlSelfActivity.class);
+                        startActivity(mIntent);
+                        break;
+
 
 
                 }
