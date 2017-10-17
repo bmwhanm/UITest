@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hq.uitest.permission.RunTimePermissionActivity">
+
+    <Button
+        android:id="@+id/btn_permission_camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="获取相机权限"/>
+
+    <Button
+        android:id="@+id/btn_read_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="获取读联系人的权限"/>
+    <Button
+        android:id="@+id/btn_write_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="获取写联系人的权限"/>
+
+</LinearLayout>

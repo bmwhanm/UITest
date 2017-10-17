@@ -5,16 +5,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
+import com.alibaba.android.arouter.facade.Postcard;
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.facade.callback.NavigationCallback;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.hq.uitest.aigeselfview.FirstActivity;
 import com.hq.uitest.aigeselfview.PaintAndTextActivity;
 import com.hq.uitest.animator.PathInterceptorActivity;
 import com.hq.uitest.animator.PropertyActivity;
 import com.hq.uitest.animator.TransitionFirstActivity;
+import com.hq.uitest.camera.TakePhotoActivity;
+import com.hq.uitest.canlender.CalenderSelfActivity;
+import com.hq.uitest.canlender.SecondCalenderActivity;
 import com.hq.uitest.canvas.CanvasActivity;
 import com.hq.uitest.drawable.DrawableBaseActivity;
 import com.hq.uitest.event.LeftDeleteActivity;
 import com.hq.uitest.event.ScrollActivity;
+import com.hq.uitest.loopview.LoopViewActivity;
 import com.hq.uitest.materialdesign.AppBarCoordinatorActivity;
 import com.hq.uitest.paint.PaintActivity;
 import com.hq.uitest.paint.PaintMatrixActivity;
@@ -23,11 +32,15 @@ import com.hq.uitest.paint.PaintShaderPracticeActivity;
 import com.hq.uitest.path.BeisaierPathActivity;
 import com.hq.uitest.path.PathBaseActivity;
 import com.hq.uitest.path.SearchAnimatorActivity;
+import com.hq.uitest.permission.RunTimePermissionActivity;
 import com.hq.uitest.recyclerviewt.RecyclerViewStaggerActivity;
 import com.hq.uitest.recyclerviewt.headandfootrv.HeaderRvActivity;
 import com.hq.uitest.recyclerviewt.itemtouch.ItemTouchRvActivity;
 import com.hq.uitest.refreshcontrol.RefreshControlSelfActivity;
 import com.hq.uitest.themeandstyle.ThemeAndStyleActivity;
+import com.hq.uitest.viewpager.transform.TransformActivity;
+import com.hq.uitest.viewpager.verticalvp.VerticalViewPagerActivity;
+import com.hq.uitest.vlayout.VLayoutActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ARouter.init(getApplication());
 
 
         mData = new ArrayList<>();
@@ -68,6 +82,17 @@ public class MainActivity extends AppCompatActivity {
         mData.add("AppBarLayout加CoordinatorLayout加CollapsingToolbarLayout");
         mData.add("根据贝塞尔曲线画出一个圆形的滑动图标");
         mData.add("下拉刷新上拉加载更多");
+        mData.add("popupWindow Test");
+        mData.add("VerticalViewPager Test");
+        mData.add("Viewpager转场动画 PagerTransform");
+        mData.add("自定义日历控件");
+        mData.add("第二种自定义日历控件");
+        mData.add("阿里ARoute路由跳转");
+        mData.add("VLayout使用");
+        mData.add("拍照以及选取相册");
+        mData.add("测试LoopView");
+        mData.add("运行时动态申请权限");
+
 
 
         rv_main = (RecyclerView) findViewById(R.id.rv_main);
@@ -166,8 +191,83 @@ public class MainActivity extends AppCompatActivity {
                         mIntent = new Intent(MainActivity.this, RefreshControlSelfActivity.class);
                         startActivity(mIntent);
                         break;
+                    case "popupWindow Test":
+                        mIntent = new Intent(MainActivity.this,PopupWindowActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "VerticalViewPager Test":
+                        mIntent = new Intent(MainActivity.this, VerticalViewPagerActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "Viewpager转场动画 PagerTransform":
+                        mIntent = new Intent(MainActivity.this, TransformActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "自定义日历控件":
+                        mIntent = new Intent(MainActivity.this, CalenderSelfActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "第二种自定义日历控件":
+                        mIntent = new Intent(MainActivity.this, SecondCalenderActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "阿里ARoute路由跳转":
+                        ARouter.getInstance().build("/aroute/first").navigation(getApplicationContext(), new NavigationCallback() {
+                            @Override
+                            public void onFound(Postcard postcard) {
+                                if(postcard != null) {
+                                    Log.e("TAG", "onFound:" + postcard.toString());
+                                }
+                                else {
+                                    Log.e("TAG","onFound...");
+                                }
+                            }
 
+                            @Override
+                            public void onLost(Postcard postcard) {
+                                if(postcard != null) {
+                                    Log.e("TAG","onLost:"+postcard.toString());
+                                }else{
+                                    Log.e("TAG","onLost:");
+                                }
+                            }
 
+                            @Override
+                            public void onArrival(Postcard postcard) {
+                                if(postcard != null) {
+                                    Log.e("TAG","onArrival:"+postcard.toString());
+                                }else{
+                                    Log.e("TAG","onArrival:");
+                                }
+                            }
+
+                            @Override
+                            public void onInterrupt(Postcard postcard) {
+                                if(postcard != null) {
+                                    Log.e("TAG","onInterrupt:"+postcard.toString());
+                                }else{
+                                    Log.e("TAG","onInterrupt:");
+                                }
+                            }
+
+                        } );
+                        break;
+                    case "VLayout使用":
+                        mIntent = new Intent(MainActivity.this, VLayoutActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "拍照以及选取相册":
+                        mIntent = new Intent(MainActivity.this, TakePhotoActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "测试LoopView":
+                        mIntent = new Intent(MainActivity.this, LoopViewActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "运行时动态申请权限":
+                        mIntent = new Intent(MainActivity.this, RunTimePermissionActivity.class);
+                        startActivity(mIntent);
+                        break;
 
                 }
             }

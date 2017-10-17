@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:textSize="14sp"
-        android:background="@android:color/transparent"
+        android:background="@android:color/holo_blue_dark"
         />
 
 </LinearLayout>

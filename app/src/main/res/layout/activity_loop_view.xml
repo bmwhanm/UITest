@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hq.uitest.loopview.WrapLinearlayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:id="@+id/loop_root"
+    android:clipChildren="false"
+    tools:context="com.hq.uitest.loopview.LoopViewActivity">
+
+    <com.hq.uitest.loopview.LoopView
+        android:id="@+id/loop_test"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        app:drawItemCount="10"
+        app:Loop_textSize="16sp"/>
+
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="#ffffffff"
+        android:layout_weight="1">
+
+        <com.hq.uitest.loopview.WheelView
+            android:id="@+id/loop_wheel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <com.hq.uitest.viewpager.verticalvp.VerticalViewPager
+        android:id="@+id/loop_vertical_vp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="50dp"
+        android:background="@color/colorAccent"
+        android:layout_gravity="center"/>
+
+</com.hq.uitest.loopview.WrapLinearlayout>

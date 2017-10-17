@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hq.uitest">
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -39,7 +43,34 @@
             android:name=".materialdesign.AppBarCoordinatorActivity"
             android:theme="@style/AppTheme.DIYToolbar" />
         <activity android:name=".path.BeisaierPathActivity" />
-        <activity android:name=".refreshcontrol.RefreshControlSelfActivity"></activity>
+        <activity android:name=".refreshcontrol.RefreshControlSelfActivity" />
+        <activity android:name=".materialdesign.DrawerLayoutActivity" />
+        <activity android:name=".PopupWindowActivity" />
+        <activity android:name=".viewpager.verticalvp.VerticalViewPagerActivity" />
+        <activity android:name=".viewpager.transform.TransformActivity" />
+        <activity android:name=".canlender.CalenderSelfActivity" />
+        <activity android:name=".canlender.SecondCalenderActivity" />
+        <activity android:name=".aroute.ArouteActivity" />
+        <activity android:name=".aroute.SchameFilterActivity">
+            <intent-filter>
+                <data
+                    android:host="www.heqiang.com"
+                    android:scheme="hehe" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".aroute.ArouteWithParamsActivity" />
+        <activity android:name=".aroute.ArouteThirdActivity" />
+        <activity android:name=".aroute.TestServiceActivity" />
+        <activity android:name=".tangram.TangramActivity" />
+        <activity android:name=".vlayout.VLayoutActivity" />
+        <activity android:name=".camera.TakePhotoActivity" />
+        <activity android:name=".loopview.LoopViewActivity" />
+        <activity android:name=".permission.RunTimePermissionActivity"></activity>
     </application>
 
 </manifest>

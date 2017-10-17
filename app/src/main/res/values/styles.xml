@@ -26,4 +26,10 @@
         <!-- 各控制元件的预设颜色 -->
         <item name="colorControlNormal">#6600ff</item>
     </style>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension"/>
+        <attr name="border_color" format="color"/>
+        <attr name="border_overlay" format="dimension"/>
+    </declare-styleable>
 </resources>

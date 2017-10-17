@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomCalendarView">
+        <!--这四个颜色分别是月份、星期、日期、任务的背景色,正式使用时可配置透明色-->
+        <attr name="mBgMonth" format="color" />
+        <attr name="mBgWeek" format="color" />
+        <attr name="mBgDay" format="color" />
+        <attr name="mBgPre" format="color" />
+
+        <!--标题字体颜色-->
+        <attr name="mTextColorMonth" format="color" />
+        <!--星期字体颜色-->
+        <attr name="mTextColorWeek" format="color" />
+        <!--日期字体颜色-->
+        <attr name="mTextColorDay" format="color" />
+        <!--任务结束时字体的颜色-->
+        <attr name="mTextColorPreFinish" format="color" />
+        <attr name="mTextColorPreUnFinish" format="color" />
+
+        <!--选择的字体的颜色-->
+        <attr name="mSelectedTextColor" format="color" />
+        <attr name="mSelectedBg" format="reference" />
+
+        <attr name="mCurrentBg" format="color" />
+        <attr name="mCurrentBgStrokeWidth" format="color" />
+
+        <!--标题字体大小-->
+        <attr name="mTextSizeMonth" format="dimension"/>
+        <!--星期字体大小-->
+        <attr name="mTextSizeWeek" format="dimension"/>
+        <!-- 日期字体大小-->
+        <attr name="mTextSizeDay" format="dimension"/>
+        <attr name="mTextSizePre" format="dimension" />          <!--任务次数字体大小-->
+
+
+        <attr name="mMonthRowL" format="reference" />            <!--月份箭头-->
+        <attr name="mMonthRowR" format="reference" />            <!--月份箭头-->
+        <attr name="mMonthRowSpac" format="dimension" />
+
+        <attr name="mSelectRadius" format="dimension" />         <!--选中日期背景半径-->
+        <attr name="mMonthSpac" format="dimension" />            <!--标题月份上下间隔-->
+        <attr name="mLineSpac" format="dimension" />             <!--日期行间距-->
+        <attr name="mTextSpac" format="dimension" />             <!--日期和任务次数字体上下间距-->
+
+    </declare-styleable>
+
+
+
+    <declare-styleable name="LoopView">
+        <attr name="lineColor" format="color"/>
+        <attr name="topBottomTextColor" format="color"/>
+        <attr name="centerTextColor" format="color"/>
+        <attr name="Loop_textSize" format="dimension"/>
+        <attr name="Loop_canLoop" format="boolean"/>
+        <attr name="initPosition" format="integer"/>
+        <attr name="drawItemCount" format="integer"/>
+    </declare-styleable>
+</resources>

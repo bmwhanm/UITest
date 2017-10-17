@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hq.uitest.canlender.CalenderSelfActivity">
+
+    <com.hq.uitest.canlender.CustomCalendarView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp"
+        app:mMonthRowSpac="20dp"
+        android:visibility="gone"/>
+
+    <CalendarView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+    <Button
+        android:id="@+id/btn_cal_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:id="@+id/btn_add_cal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="月份增加"
+        />
+
+    <Button
+        android:id="@+id/btn_reduce_cal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="月份减少"/>
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_calender"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"/>
+
+</LinearLayout>
