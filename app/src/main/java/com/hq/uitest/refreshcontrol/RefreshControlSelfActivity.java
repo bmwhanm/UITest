@@ -29,20 +29,21 @@ public class RefreshControlSelfActivity extends AppCompatActivity {
         rv_refresh = (RecyclerView) findViewById(R.id.rv_refresh_control);
         tv_refresh = (TextView) findViewById(R.id.tv_refresh_control);
         lay_content = (MyLinearLayout) findViewById(R.id.lay_refresh_control);
+//        lay_content.scrollTo(0,lay_content.getMeasuredHeight());
 
-        lay_content.setListener(new MyLinearLayout.myOnScrollListener() {
-            @Override
-            public void onScroll(int dY) {
-                if(dY < -100)tv_refresh.setText("松开就刷新");
-                else tv_refresh.setText("继续下拉才刷新");
-//                Log.e("TAG","onScrollY :" +dY);
-            }
-
-            @Override
-            public void onFinish() {
-                tv_refresh.setText("继续下拉才刷新");
-            }
-        });
+//        lay_content.setListener(new MyLinearLayout.myOnScrollListener() {
+//            @Override
+//            public void onScroll(int dY) {
+//                if(dY < -100)tv_refresh.setText("松开就刷新");
+//                else tv_refresh.setText("继续下拉才刷新");
+////                Log.e("TAG","onScrollY :" +dY);
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//                tv_refresh.setText("继续下拉才刷新");
+//            }
+//        });
 
 
 

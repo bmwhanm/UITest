@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hq.uitest.calendarevent.TestCalendarEventActivity">
+
+    <Button
+        android:id="@+id/btn_event_common"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="添加普通事件"/>
+    <Button
+        android:id="@+id/btn_event_repeat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="添加重复事件"/>
+
+    <Button
+        android:id="@+id/btn_event_read"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="读取所有事件"/>
+    <Button
+        android:id="@+id/btn_event_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="删除所有事件"/>
+</LinearLayout>

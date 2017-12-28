@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -16,6 +17,10 @@ import com.hq.uitest.aigeselfview.PaintAndTextActivity;
 import com.hq.uitest.animator.PathInterceptorActivity;
 import com.hq.uitest.animator.PropertyActivity;
 import com.hq.uitest.animator.TransitionFirstActivity;
+import com.hq.uitest.basetest.TestBaseFragmentActivity;
+import com.hq.uitest.basetest.TestBaseTitleActivity;
+import com.hq.uitest.behavior.SelfBehaviorActivity;
+import com.hq.uitest.calendarevent.TestCalendarEventActivity;
 import com.hq.uitest.camera.TakePhotoActivity;
 import com.hq.uitest.canlender.CalenderSelfActivity;
 import com.hq.uitest.canlender.SecondCalenderActivity;
@@ -33,11 +38,17 @@ import com.hq.uitest.path.BeisaierPathActivity;
 import com.hq.uitest.path.PathBaseActivity;
 import com.hq.uitest.path.SearchAnimatorActivity;
 import com.hq.uitest.permission.RunTimePermissionActivity;
+import com.hq.uitest.qtsCalendar.QtsCalendarActivity;
 import com.hq.uitest.recyclerviewt.RecyclerViewStaggerActivity;
 import com.hq.uitest.recyclerviewt.headandfootrv.HeaderRvActivity;
 import com.hq.uitest.recyclerviewt.itemtouch.ItemTouchRvActivity;
 import com.hq.uitest.refreshcontrol.RefreshControlSelfActivity;
+import com.hq.uitest.shadow.ShadowLayoutActivity;
 import com.hq.uitest.themeandstyle.ThemeAndStyleActivity;
+import com.hq.uitest.ultrapull.PullToRefreshActivity;
+import com.hq.uitest.ultrapull.UltraPullToRecyclerViewRefreshActivity;
+import com.hq.uitest.ultrapull.UltraPullToRefreshQingActivity;
+import com.hq.uitest.viewpager.ViewPagerSelfTransFormActivity;
 import com.hq.uitest.viewpager.transform.TransformActivity;
 import com.hq.uitest.viewpager.verticalvp.VerticalViewPagerActivity;
 import com.hq.uitest.vlayout.VLayoutActivity;
@@ -85,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         mData.add("popupWindow Test");
         mData.add("VerticalViewPager Test");
         mData.add("Viewpager转场动画 PagerTransform");
+        mData.add("ViewPager各种切换动画效果");
         mData.add("自定义日历控件");
         mData.add("第二种自定义日历控件");
         mData.add("阿里ARoute路由跳转");
@@ -92,7 +104,16 @@ public class MainActivity extends AppCompatActivity {
         mData.add("拍照以及选取相册");
         mData.add("测试LoopView");
         mData.add("运行时动态申请权限");
-
+        mData.add("测试BaseTitleActivity");
+        mData.add("测试BaseFragmentActivity");
+        mData.add("截取屏幕上某一块的布局做成图片");
+        mData.add("在日历中添加普通事件和重复事件");
+        mData.add("青团社日历");
+        mData.add("UltraPullToRefresh");
+        mData.add("UltraPullToRefresh And RecyclerView");
+        mData.add("UltraPullToRefresh And RecyclerView青团社");
+        mData.add("SelfBehavior Activity");
+        mData.add("各种自定义阴影");
 
 
         rv_main = (RecyclerView) findViewById(R.id.rv_main);
@@ -102,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.setListener(new StringAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(String str, RecyclerView.ViewHolder holder) {
-                switch (str){
+                switch (str) {
                     case "Theme and Style MD的主题与特色主要是primary，primaryDark，accent":
                         mIntent = new Intent(MainActivity.this, ThemeAndStyleActivity.class);
                         startActivity(mIntent);
@@ -192,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(mIntent);
                         break;
                     case "popupWindow Test":
-                        mIntent = new Intent(MainActivity.this,PopupWindowActivity.class);
+                        mIntent = new Intent(MainActivity.this, PopupWindowActivity.class);
                         startActivity(mIntent);
                         break;
                     case "VerticalViewPager Test":
@@ -215,42 +236,41 @@ public class MainActivity extends AppCompatActivity {
                         ARouter.getInstance().build("/aroute/first").navigation(getApplicationContext(), new NavigationCallback() {
                             @Override
                             public void onFound(Postcard postcard) {
-                                if(postcard != null) {
+                                if (postcard != null) {
                                     Log.e("TAG", "onFound:" + postcard.toString());
-                                }
-                                else {
-                                    Log.e("TAG","onFound...");
+                                } else {
+                                    Log.e("TAG", "onFound...");
                                 }
                             }
 
                             @Override
                             public void onLost(Postcard postcard) {
-                                if(postcard != null) {
-                                    Log.e("TAG","onLost:"+postcard.toString());
-                                }else{
-                                    Log.e("TAG","onLost:");
+                                if (postcard != null) {
+                                    Log.e("TAG", "onLost:" + postcard.toString());
+                                } else {
+                                    Log.e("TAG", "onLost:");
                                 }
                             }
 
                             @Override
                             public void onArrival(Postcard postcard) {
-                                if(postcard != null) {
-                                    Log.e("TAG","onArrival:"+postcard.toString());
-                                }else{
-                                    Log.e("TAG","onArrival:");
+                                if (postcard != null) {
+                                    Log.e("TAG", "onArrival:" + postcard.toString());
+                                } else {
+                                    Log.e("TAG", "onArrival:");
                                 }
                             }
 
                             @Override
                             public void onInterrupt(Postcard postcard) {
-                                if(postcard != null) {
-                                    Log.e("TAG","onInterrupt:"+postcard.toString());
-                                }else{
-                                    Log.e("TAG","onInterrupt:");
+                                if (postcard != null) {
+                                    Log.e("TAG", "onInterrupt:" + postcard.toString());
+                                } else {
+                                    Log.e("TAG", "onInterrupt:");
                                 }
                             }
 
-                        } );
+                        });
                         break;
                     case "VLayout使用":
                         mIntent = new Intent(MainActivity.this, VLayoutActivity.class);
@@ -268,6 +288,52 @@ public class MainActivity extends AppCompatActivity {
                         mIntent = new Intent(MainActivity.this, RunTimePermissionActivity.class);
                         startActivity(mIntent);
                         break;
+                    case "测试BaseTitleActivity":
+                        mIntent = new Intent(MainActivity.this, TestBaseTitleActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "测试BaseFragmentActivity":
+                        mIntent = new Intent(MainActivity.this, TestBaseFragmentActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "截取屏幕上某一块的布局做成图片":
+                        mIntent = new Intent(MainActivity.this, ClipViewActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "在日历中添加普通事件和重复事件":
+                        mIntent = new Intent(MainActivity.this, TestCalendarEventActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "ViewPager各种切换动画效果":
+                        mIntent = new Intent(MainActivity.this, ViewPagerSelfTransFormActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "青团社日历":
+                        mIntent = new Intent(MainActivity.this, QtsCalendarActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "UltraPullToRefresh":
+                        mIntent = new Intent(MainActivity.this, PullToRefreshActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "UltraPullToRefresh And RecyclerView":
+                        mIntent = new Intent(MainActivity.this, UltraPullToRecyclerViewRefreshActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "SelfBehavior Activity":
+                        mIntent = new Intent(MainActivity.this, SelfBehaviorActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "各种自定义阴影":
+                        mIntent = new Intent(MainActivity.this, ShadowLayoutActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case "UltraPullToRefresh And RecyclerView青团社":
+                        mIntent = new Intent(MainActivity.this, UltraPullToRefreshQingActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    default:
+                        break;
 
                 }
             }
@@ -278,6 +344,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        findViewById(R.id.btn_main_refresh).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                mAdapter.first = false;
+//                mAdapter.notifyDataSetChanged();
+//            }
+//        });
 
 
     }

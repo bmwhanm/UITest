@@ -43,7 +43,7 @@ public class SecondCalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         mCalendar = Calendar.getInstance();
         mCalendar.setTime(new Date());
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 2; i++) {
             SelfDate item = new SelfDate();
             int month = mCalendar.get(Calendar.MONTH);
             int year = mCalendar.get(Calendar.YEAR);

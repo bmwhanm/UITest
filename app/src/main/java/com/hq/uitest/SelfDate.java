@@ -1,10 +1,12 @@
 package com.hq.uitest;
 
+import java.io.Serializable;
+
 /**
  * Created by heqiang on 17/9/12.
  */
 
-public class SelfDate {
+public class SelfDate implements Serializable {
     private int mMonth;
     private int mYear;
     private int mDay;

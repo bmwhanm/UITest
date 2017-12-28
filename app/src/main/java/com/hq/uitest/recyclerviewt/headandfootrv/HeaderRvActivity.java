@@ -38,6 +38,6 @@ public class HeaderRvActivity extends AppCompatActivity {
         for (int i = 0; i < 100; i++) {
             mData.add("第" + i + "项");
         }
-        rv_wrap.setAdapter( new StringAdapter(mData));
+        rv_wrap.setAdapter( new MultiPartAdapter(this));
     }
 }

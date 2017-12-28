@@ -58,7 +58,7 @@ public class RunTimePermissionActivity extends AppCompatActivity implements View
                 }
                 break;
             case R.id.btn_read_contact:
-                int checkReadContact = ContextCompat.checkSelfPermission(this,Manifest.permission.READ_CONTACTS);
+                int checkReadContact = ContextCompat.checkSelfPermission(this,Manifest.permission_group.CONTACTS);
                 if(checkReadContact == PackageManager.PERMISSION_DENIED){
                     if(Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
                         boolean shouldShow = shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS);

@@ -1,31 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.hq.uitest.refreshcontrol.MyLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/lay_refresh_control"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.hq.uitest.refreshcontrol.RefreshControlSelfActivity">
+    android:layout_height="match_parent">
+
+    <!--<com.hq.uitest.refreshcontrol.MyLinearLayoutImplensNestScroll xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:tools="http://schemas.android.com/tools"-->
+        <!--android:id="@+id/lay_refresh_control"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:clipChildren="false"-->
+        <!--android:orientation="vertical"-->
+        <!--tools:context="com.hq.uitest.refreshcontrol.RefreshControlSelfActivity">-->
 
 
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:background="@color/colorAccent"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="horizontal">-->
 
-    <LinearLayout
+            <!--<TextView-->
+                <!--android:id="@+id/tv_refresh_control"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:gravity="center"-->
+                <!--android:text="下拉才刷新" />-->
+        <!--</LinearLayout>-->
+
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/rv_refresh_control"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:clipToPadding="false"/>-->
+    <!--</com.hq.uitest.refreshcontrol.MyLinearLayoutImplensNestScroll>-->
+
+    <com.hq.uitest.refreshcontrol.MyLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/lay_refresh_control"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="-61dp"
-        android:background="@color/colorAccent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.hq.uitest.refreshcontrol.RefreshControlSelfActivity">
 
-        <TextView
-            android:id="@+id/tv_refresh_control"
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:layout_marginTop="-60dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_refresh_control"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="下拉才刷新" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_refresh_control"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="下拉才刷新"
-            android:gravity="center"/>
-    </LinearLayout>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_refresh_control"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</com.hq.uitest.refreshcontrol.MyLinearLayout>
+            />
+    </com.hq.uitest.refreshcontrol.MyLinearLayout>
+
+
+</RelativeLayout>

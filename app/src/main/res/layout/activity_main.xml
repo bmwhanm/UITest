@@ -1,16 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.hq.uitest.MainActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <!--<Button-->
+        <!--android:id="@+id/btn_main_refresh"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="setRefresh"-->
+        <!--android:visibility="gone"/>-->
+    <!--<android.support.v4.widget.SwipeRefreshLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <!--<FrameLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        <!--</FrameLayout>-->
+
+    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
+
+
+    <!--<android.support.v4.widget.SwipeRefreshLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+        <!--<FrameLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/colorAccent">-->
+            <!--<android.support.v7.widget.RecyclerView-->
+                <!--android:id="@+id/rv_main"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"/>-->
+        <!--</FrameLayout>-->
+    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
 
     <!--<android.support.design.widget.BottomNavigationView-->
         <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
@@ -20,4 +50,4 @@
         <!--android:layout_height="56dp"-->
         <!--android:layout_gravity="start"-->
         <!--app:menu="@menu/my_navigation_items" />-->
-</LinearLayout>
+</FrameLayout>

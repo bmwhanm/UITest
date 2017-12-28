@@ -43,9 +43,9 @@ public class TransformActivity extends AppCompatActivity {
         TextView tv4 = (TextView) view4.findViewById(R.id.tv_vp_content);
         tv4.setText("4");
         mViews.add(view4);
-
-        vp.setPageTransformer(true,new ZoomOutPageTransformer());
-        vp.setPageMargin(-100);
+//
+//        vp.setPageTransformer(true,new ZoomOutPageTransformer());
+//        vp.setPageMargin(-100);
 
 
 

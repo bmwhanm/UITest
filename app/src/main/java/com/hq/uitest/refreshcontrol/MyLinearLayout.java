@@ -3,6 +3,8 @@ package com.hq.uitest.refreshcontrol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.view.NestedScrollingParent;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -20,7 +22,7 @@ import java.util.List;
  * Created by heqiang on 17/8/1.
  */
 
-public class MyLinearLayout extends LinearLayout {
+public class MyLinearLayout extends LinearLayout  {
     private RecyclerView rv;
     private TextView tv;
     private StringAdapter adapter;
@@ -33,6 +35,7 @@ public class MyLinearLayout extends LinearLayout {
     private final int FINISHED = 0x002;
     private int state = FINISHED;
     private final int MAXHEIGHT = dipToPx(getContext(),60);
+    private MotionEvent lastEvent;
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -42,8 +45,9 @@ public class MyLinearLayout extends LinearLayout {
                     state = FINISHED;
                     mScroller.startScroll(0,getScrollY(),0,-getScrollY(),200);
                     invalidate();
-
                 break;
+                default:
+                    break;
             }
         }
     };
@@ -77,16 +81,40 @@ public class MyLinearLayout extends LinearLayout {
         }
         adapter = new StringAdapter(mData);
         rv.setAdapter(adapter);
+
+//        GridLayoutManager manager1 = new GridLayoutManager(getContext(),3,GridLayoutManager.VERTICAL,false);
     }
 
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        if(lastEvent == null){
+            lastEvent = ev;
+        }
         if(manager.findFirstCompletelyVisibleItemPosition() == 0 && ev.getAction() == MotionEvent.ACTION_MOVE){
             Log.e("TAG","dispatchTouchEvent firstCompleteVisibleItemPosition == 0");
 //            ev.setAction(MotionEvent.ACTION_DOWN);
-            requestDisallowInterceptTouchEvent(false);
+            int dy = (int) (ev.getY() - lastEvent.getY());
+            Log.e("TAG","dy ...."+dy);
+            if(dy > 0){
+                requestDisallowInterceptTouchEvent(false);
+                Log.e("TAG","dispatchTouchEvent false");
+            }else{
+//                lastEvent = ev;
+                requestDisallowInterceptTouchEvent(true);
+                Log.e("TAG","dispatchTouchEvent true");
+//                lastEvent =  MotionEvent.obtain(ev);
+//                return rv.dispatchTouchEvent(ev);
+//                return  rv.dispatchTouchEvent(ev);
+            }
+
+        }else{
+            requestDisallowInterceptTouchEvent(true);
+//            lastEvent =  MotionEvent.obtain(ev);
+            Log.e("TAG","dispatchTouchEvent true");
+//            return rv.dispatchTouchEvent(ev);
         }
+        lastEvent =  MotionEvent.obtain(ev);
         return super.dispatchTouchEvent(ev);
     }
 
@@ -125,7 +153,7 @@ public class MyLinearLayout extends LinearLayout {
             case MotionEvent.ACTION_UP:
                 break;
         }
-//        lastY = (int) ev.getY();
+        lastY = (int) ev.getY();
         Log.e("TAG","onIntercept");
         if(manager.findFirstCompletelyVisibleItemPosition() == 0){
             Log.e("TAG","onInterceptTouchEvent    firstCompleteVisibleItemPosition == 0");

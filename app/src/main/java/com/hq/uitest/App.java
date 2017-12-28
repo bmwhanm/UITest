@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.hq.uitest.base.BaseApplication;
 import com.squareup.picasso.Picasso;
 import com.tmall.wireless.tangram.TangramBuilder;
 import com.tmall.wireless.tangram.util.IInnerImageSetter;
@@ -15,13 +16,12 @@ import com.tmall.wireless.tangram.util.IInnerImageSetter;
  * Created by heqiang on 17/9/18.
  */
 
-public class App extends Application {
+public class App extends BaseApplication {
     private final boolean isDebug = true;
 
 
     @Override
-    public void onCreate() {
-        super.onCreate();
+    protected void create() {
         if(isDebug){
             ARouter.openLog();
             ARouter.openDebug();
@@ -36,5 +36,6 @@ public class App extends Application {
                 Picasso.with(getApplicationContext()).load(url).into(view);
             }
         },ImageView.class);
+
     }
 }

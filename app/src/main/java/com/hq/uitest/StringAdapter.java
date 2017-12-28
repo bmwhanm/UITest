@@ -16,6 +16,7 @@ import java.util.List;
 public class StringAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<String> mData;
+    public boolean first = true;
     public StringAdapter(List<String> data){
         mData = data;
     }
@@ -50,8 +51,19 @@ public class StringAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     }
                 });
             }
-
-
+//            if(first) {
+//                if (position > 5) {
+//                    holder.tv_content.setVisibility(View.GONE);
+//                } else {
+//                    holder.tv_content.setVisibility(View.VISIBLE);
+//                }
+//            }else{
+//                if (position == 0 || position > 5) {
+//                    holder.tv_content.setVisibility(View.GONE);
+//                } else {
+//                    holder.tv_content.setVisibility(View.VISIBLE);
+//                }
+//            }
 
 
         }
@@ -75,10 +87,12 @@ public class StringAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     class ItemViewHolder extends RecyclerView.ViewHolder{
         TextView tv_content;
+//        View view_null;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
             tv_content = (TextView) itemView.findViewById(R.id.tv_rv_str);
+//            view_null = itemView.findViewById(R.id.view_null);
         }
     }
 }

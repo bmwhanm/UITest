@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_self_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:paddingTop="100dp"/>
+
+    <TextView
+        android:id="@+id/tv_self_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#00ffff"
+        android:text="self behavior"
+        android:textSize="16sp"
+        app:layout_behavior="@string/self_behavior"
+        android:gravity="center"/>
+
+
+
+</android.support.design.widget.CoordinatorLayout>

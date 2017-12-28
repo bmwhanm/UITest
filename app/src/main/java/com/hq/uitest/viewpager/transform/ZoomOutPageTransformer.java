@@ -11,6 +11,6 @@ import android.view.View;
 public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
     @Override
     public void transformPage(View page, float position) {
-        Log.e("TAG","position:"+position);
+        Log.e("TAG","View : "+page+"position:"+position);
     }
 }

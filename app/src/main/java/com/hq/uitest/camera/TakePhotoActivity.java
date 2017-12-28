@@ -9,6 +9,7 @@ import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -29,15 +30,16 @@ import java.util.List;
  * Created by heqiang on 17/10/16.
  */
 
-public class TakePhotoActivity extends AppCompatActivity implements View.OnClickListener{
+public class TakePhotoActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btn_take_photo,btn_select;
+    private Button btn_take_photo, btn_select;
     private final int TAKE_PHOTO = 0x1;
     private final int CROP_PHOTO = 0x2;
     private final int SELECT_PHOTO = 0x3;
-    private File  mPhotoFile ;
+    private File mPhotoFile;
     private ImageView iv_photo;
     private String EXTRA_RESTORE_PHOTO = "photo File";
+    private Uri currentUri;
 
 
     @Override
@@ -68,9 +70,9 @@ public class TakePhotoActivity extends AppCompatActivity implements View.OnClick
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         mPhotoFile = (File) savedInstanceState.getSerializable(EXTRA_RESTORE_PHOTO);
-        Bitmap bitmap = decodeBitmapFromFile(mPhotoFile.getAbsolutePath(),200,200);
+        Bitmap bitmap = decodeBitmapFromFile(mPhotoFile.getAbsolutePath(), 200, 200);
         int degree = getBitmapDegree(mPhotoFile.getAbsolutePath());
-        bitmap = rotateBitmapByDegree(bitmap,degree);
+        bitmap = rotateBitmapByDegree(bitmap, degree);
         iv_photo.setImageBitmap(bitmap);
 
     }
@@ -78,23 +80,81 @@ public class TakePhotoActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_take_photo:
-                if(hasCamera()) {
+                if (hasCamera()) {
                     Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     Uri fileUri = Uri.fromFile(mPhotoFile);
                     captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
                     startActivityForResult(captureIntent, TAKE_PHOTO);
-                }else{
-                    Toast.makeText(this,"没有发现相机应用",Toast.LENGTH_SHORT).show();
+//                    openTakePhoto();
+                } else {
+                    Toast.makeText(this, "没有发现相机应用", Toast.LENGTH_SHORT).show();
                 }
 
                 break;
             case R.id.btn_select:
+                openSelectPhoto();
                 break;
         }
     }
 
+    private void openSelectPhoto() {
+        File appDir;
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            appDir = new File(Environment.getExternalStorageDirectory(), "qtshe");
+            if (!appDir.exists()) {
+                appDir.mkdir();
+            }
+        } else {
+            appDir = new File(getCacheDir().getAbsolutePath(), "qtshe");
+        }
+        String fileName = System.currentTimeMillis() + ".jpg";
+        File file = new File(appDir, fileName);
+        try {
+            file.createNewFile();
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            //设置选择类型为图片类型
+            intent.setType("image/*");
+            //打开图片选择
+            currentUri = Uri.fromFile(file);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, currentUri);
+            startActivityForResult(intent, SELECT_PHOTO);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "文件存储路径异常", Toast.LENGTH_SHORT).show();
+        }
+
+
+    }
+
+    private void openTakePhoto() {
+        File appDir;
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            appDir = new File(Environment.getExternalStorageDirectory(), "qtshe");
+            if (!appDir.exists()) {
+                appDir.mkdir();
+            }
+        } else {
+            appDir = new File(getCacheDir().getAbsolutePath(), "qtshe");
+        }
+        String fileName = System.currentTimeMillis() + ".jpg";
+        File file = new File(appDir, fileName);
+        try {
+            file.createNewFile();
+            Intent intent = new Intent();
+            intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+            currentUri = Uri.fromFile(file);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, currentUri);
+            startActivityForResult(intent, TAKE_PHOTO);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "文件存储路径异常", Toast.LENGTH_SHORT).show();
+        }
+
+}
 
 
     /**
@@ -110,21 +170,24 @@ public class TakePhotoActivity extends AppCompatActivity implements View.OnClick
     }
 
 
-
     //2、拿到照片
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == TAKE_PHOTO && resultCode == RESULT_OK) {
-            Log.e("TAG","PhotoFile .... "+mPhotoFile.getAbsolutePath());
+            Log.e("TAG", "PhotoFile .... " + mPhotoFile.getAbsolutePath());
             Bitmap bitmap = BitmapFactory.decodeFile(mPhotoFile.getAbsolutePath());
             int degree = getBitmapDegree(mPhotoFile.getAbsolutePath());
-            Bitmap bitmap1 = rotateBitmapByDegree(BitmapFactory.decodeFile(mPhotoFile.getAbsolutePath()),degree);
+            Bitmap bitmap1 = rotateBitmapByDegree(BitmapFactory.decodeFile(mPhotoFile.getAbsolutePath()), degree);
+            iv_photo.setImageBitmap(bitmap1);
+        }else if(requestCode == SELECT_PHOTO && resultCode == RESULT_OK){
+            Bitmap bitmap = BitmapFactory.decodeFile(mPhotoFile.getAbsolutePath());
+            int degree = getBitmapDegree(mPhotoFile.getAbsolutePath());
+            Bitmap bitmap1 = rotateBitmapByDegree(BitmapFactory.decodeFile(mPhotoFile.getAbsolutePath()), degree);
             iv_photo.setImageBitmap(bitmap1);
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
-
 
 
     /**
