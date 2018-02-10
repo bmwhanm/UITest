@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
         mData.add("UltraPullToRefresh And RecyclerView青团社");
         mData.add("SelfBehavior Activity");
         mData.add("各种自定义阴影");
+        mData.add("斜边的自定义View");
 
 
         rv_main = (RecyclerView) findViewById(R.id.rv_main);
@@ -330,6 +331,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case "UltraPullToRefresh And RecyclerView青团社":
                         mIntent = new Intent(MainActivity.this, UltraPullToRefreshQingActivity.class);
+                        startActivity(mIntent);
+                        break;
+                    case"斜边的自定义View":
+                        mIntent = new Intent(MainActivity.this,TextViewWithImgBGActivity.class);
                         startActivity(mIntent);
                         break;
                     default:

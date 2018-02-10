@@ -84,7 +84,8 @@
         <activity android:name=".ultrapull.UltraPullToRecyclerViewRefreshActivity" />
         <activity android:name=".behavior.SelfBehaviorActivity" />
         <activity android:name=".shadow.ShadowLayoutActivity" />
-        <activity android:name=".ultrapull.UltraPullToRefreshQingActivity"></activity>
+        <activity android:name=".ultrapull.UltraPullToRefreshQingActivity"/>
+        <activity android:name=".TextViewWithImgBGActivity"/>
     </application>
 
 </manifest>

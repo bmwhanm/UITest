@@ -55,4 +55,13 @@
         <attr name="initPosition" format="integer"/>
         <attr name="drawItemCount" format="integer"/>
     </declare-styleable>
+
+
+    <declare-styleable name="XieBianBgTextView">
+        <attr name="bgColor" format="color"/>
+        <attr name="bgDirection" format="integer">
+            <enum name="left" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+    </declare-styleable>
 </resources>
